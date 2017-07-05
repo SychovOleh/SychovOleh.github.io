@@ -1,0 +1,81 @@
+// Add falling of blocks under themthelves and ashadows
+@import "reset.scss";
+@import "fonts.scss";
+@import "head-nav.scss";
+@import "ban.scss";
+.content {
+  &__row {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+  &__info {
+    font-size: 0;
+    display: inline-block;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 40px 90px 40px 40px;
+    &-inner {
+      max-width: 450px;
+      margin: 0 auto;
+    }
+  }
+  &__line {
+    width: 30px;
+    height: 7px;
+    border-top: solid 2px #84959c;
+    display: inline-block;
+    margin-right: 20px;
+  }
+  &__title {
+    display: inline-block;
+    font-family: $Sans-B;
+    font-weight: bold;
+    font-size: 24px;
+    color: #555559;
+    padding-bottom: 35px;
+    margin: auto;
+    text-align: center;
+  }
+  &__text {
+    padding-left: 50px;
+    font-family: $Sans-L;
+    font-size: 17px;
+    color: #555559;
+    line-height: 22px;
+    margin: auto;
+  }
+  &__img-wrap {
+    display: inline-block;
+    width: 50%;
+  }
+  &__img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: top;
+    @media all and (min-width: 1400px) {
+      width: 100%;
+    }
+  }
+}
+
+.footer {
+  background-color: #efefef;
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__content,
+  &__link {
+    font-family: $Sans;
+    font-size: 14px;
+    color: #555559;
+  }
+  &__content {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  &__link {
+    text-decoration: none;
+  }
+}

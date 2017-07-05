@@ -1,0 +1,36 @@
+.ban {
+  background-color: #fbfafa;
+  &__wrap {
+    padding: 110px 20px 165px 20px;
+    margin: 0 auto;
+    max-width: 850px;
+    text-align: center;
+  }
+  &__icon {
+    max-width: 100%;
+    height: auto;
+    &-wrap {
+      padding-bottom: 30px;
+    }
+  }
+  &__title {
+    margin: 0 auto;
+    text-align: center;
+    font-family: $Sans-L;
+    font-size: 56px;
+    color: #555559;
+    padding-bottom: 70px;
+  }
+  &__button {
+    font-family: $Sans-SB;
+    font-size: 18px;
+    background-color: #286782;
+    color: #f1f5f7;
+    border: none;
+    border-radius: 6px;
+    padding: 23px 47px;
+    &-wrap {
+      text-align: center;
+    }
+  }
+}
