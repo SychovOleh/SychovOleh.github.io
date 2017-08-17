@@ -1,1 +1,0 @@
-# sychovoleh.github.io
