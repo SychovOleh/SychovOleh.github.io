@@ -1,0 +1,32 @@
+HTML: 
+<link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+<i class="devicon-html5-plain-wordmark colored"></i>
+-
+CSS:
+<link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+<i class="devicon-css3-plain-wordmark colored"></i>
+-
+github:
+<link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+<i class="devicon-github-plain-wordmark colored"></i>
+-
+JS:
+<link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+<i class="devicon-javascript-plain colored"></i>
+-
+GULP:
+<link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+<i class="devicon-gulp-plain colored"></i>
+-
+bootstrap:
+<link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+<i class="devicon-bootstrap-plain-wordmark colored"></i>
+-
+jquery:
+<link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+<i class="devicon-jquery-plain-wordmark colored"></i>
+-
+SASS:
+<link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+<i class="devicon-sass-original colored"></i>
+-
