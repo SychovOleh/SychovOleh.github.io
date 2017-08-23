@@ -1,0 +1,26 @@
+.main-wrap {
+  background-color: #EEEFE5;
+  font-family: 'Raleway', sans-serif;
+}
+
+.w-img1 {
+  background: url(img/monitor.png) center no-repeat;
+  background-size: cover;
+}
+
+
+/* https://stackoverflow.com/questions/21254889/how-can-i-remove-the-gutter-between-bootstrap-3-column#answer-25023129 */
+
+.row.no-pad {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.row.no-pad>[class*='col-'] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+[class*="col-"] {
+  margin-bottom: 25px;
+}
