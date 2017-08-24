@@ -1,6 +1,38 @@
-.main-wrap {
-  background-color: #EEEFE5;
+/* colors: rgba(252, 248, 227, 0.84), rgb(245, 245, 245), rgba(204, 204, 204, 0.45),#EEEFE5,#F5F5F5 */
+
+
+/* .main-wrap {} */
+.header{
+  /* background: #ffffff; */
+  background: url(img/wall1.jpg) center;
+  background-size: 100% auto;
+}
+.header__inside{
+  padding: 40px 0 90px;
+}
+.work__wrap {
+  /* background-color: #EEEFE5; */
+  background: url(img/wall2.jpg) no-repeat;
+  background-size: cover;  
+  padding: 90px 0 90px;
+}
+
+.work {
   font-family: 'Raleway', sans-serif;
+}
+
+.head-transform {
+  text-transform: uppercase;
+  border-top: 2px solid #FFFFFF;
+  border-bottom: 2px solid #FFFFFF;
+  width: 97%;
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+  padding: 25px 0px 25px 0px;
+  font-size: 35px;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  color: #b0bea7;
 }
 
 .work__img {
@@ -11,30 +43,41 @@
   height: 100%;
 }
 
-.work__content {
-  background: #ffffff;
+.work__img {
+  background: center no-repeat;
+  background-size: 100% auto;
+  transition: background-size linear .2s;
 }
 
-.work__img {
-  background: url(img/mobila.png) center;
-  background-size: contain;
+.work__img:hover {
+  background-size: 115%;
+}
+
+.work__content {
+  background: #ffffff;
+  padding: 20px;
 }
 
 .work__img-wrap {
   position: relative;
   padding-bottom: 45%;
+  overflow: hidden;
 }
+
+
+/* ADDING CLASSES */
 
 .marg-bot {
   margin-bottom: 25px;
 }
 
-
-/* https://stackoverflow.com/questions/21254889/how-can-i-remove-the-gutter-between-bootstrap-3-column#answer-25023129 */
-
 .no-pad {
   padding-right: 0;
   padding-left: 0;
+}
+
+.no-marg {
+  margin: 0;
 }
 
 
