@@ -6,6 +6,9 @@ HTML:
 CSS:
 <i class="devicon-css3-plain-wordmark colored"></i>
 -
+SASS:
+<i class="devicon-sass-original colored"></i>
+-
 github:
 <i class="devicon-github-plain-wordmark colored"></i>
 -
@@ -20,6 +23,3 @@ bootstrap:
 -
 jquery:
 <i class="devicon-jquery-plain-wordmark colored"></i>
--
-SASS:
-<i class="devicon-sass-original colored"></i>

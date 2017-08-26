@@ -14,5 +14,4 @@
 
 $(function() {
   jumboSizing();
-  // $(window).resize(jumboSizing())
 })
