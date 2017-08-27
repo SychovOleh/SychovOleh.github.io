@@ -4,10 +4,10 @@
 
 .header {
   box-shadow: inset 0 40px 100px rgba(0, 0, 0, .2);
-  padding: 230px 0 290px;
 }
 .jumbotron{
   background: inherit;
+  padding: 230px 0 290px;  
 }
 .pacifico-f {
   font-family: "Pacifico", Georgia, "Times New Roman", serif;
@@ -97,18 +97,26 @@
   padding-right: 0;
   padding-left: 0;
 }
+.no-pad-vert {
+  padding-top: 0;
+  padding-bottom: 0;
+}
 
 .no-marg {
   margin: 0;
 }
 
-
-/* .row.no-pad {
-  margin-right: 0;
-  margin-left: 0;
+@keyframes hvr-icon-hang {
+  0% {
+    -webkit-transform: translateY(6px);
+    transform: translateY(6px);
+  }
+  50% {
+    -webkit-transform: translateY(2px);
+    transform: translateY(2px);
+  }
+  100% {
+    -webkit-transform: translateY(6px);
+    transform: translateY(6px);
+  }
 }
-
-.row.no-pad>[class*='col-'] {
-  padding-right: 0;
-  padding-left: 0;
-} */
