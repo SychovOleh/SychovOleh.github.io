@@ -15,6 +15,7 @@
 }
 
 .header {
+  -webkit-box-shadow: inset 0 40px 100px rgba(0, 0, 0, .2);
   box-shadow: inset 0 40px 100px rgba(0, 0, 0, .2);
 }
 
@@ -45,6 +46,7 @@
 
 .work__wrap {
   padding: 90px 0 90px;
+  -webkit-box-shadow: inset 0 40px 100px rgba(0, 0, 0, .2);
   box-shadow: inset 0 40px 100px rgba(0, 0, 0, .2);
   background: #ffffff;
 }
@@ -83,22 +85,30 @@
 
 .work__img {
   background: center no-repeat;
+  -webkit-background-size: 100% auto;
   background-size: 100% auto;
+  -webkit-transition: -webkit-background-size linear .2s;
+  transition: -webkit-background-size linear .2s;
+  -o-transition: background-size linear .2s;
   transition: background-size linear .2s;
+  transition: background-size linear .2s, -webkit-background-size linear .2s;
 }
 
 .work__img:hover {
+  -webkit-background-size: 115% 115%;
   background-size: 115%;
 }
 
 .work__content {
   background: #ffffff;
   padding: 20px 20px 10px 20px;
+  -webkit-box-shadow: inset 0px -9px 30px rgba(0, 0, 0, .2);
   box-shadow: inset 0px -9px 30px rgba(0, 0, 0, .2);
 }
 
 @media (min-width: 992px) {
   .work__content {
+    -webkit-box-shadow: inset 0px -9px 30px rgba(0, 0, 0, .1);
     box-shadow: inset 0px -9px 30px rgba(0, 0, 0, .1);
   }
 }
@@ -110,7 +120,13 @@
 }
 
 .icon {
-  font-size: 45px;
+  font-size: 40px;
+}
+
+@media (min-width: 400px) {
+  .icon {
+    font-size: 45px;
+  }
 }
 
 
@@ -119,14 +135,27 @@
 .footer {
   background: #151515;
   color: #ccc;
+  -webkit-box-shadow: inset 0 46px 72px 8px rgba(255, 255, 255, .2);
   box-shadow: inset 0 46px 72px 8px rgba(255, 255, 255, .2);
   text-align: center;
 }
 
 .footer__item {
   position: relative;
-  height: 300px;
-  line-height: 300px;
+  height: 125px;
+  line-height: 125px;
+}
+
+.info-wrap {
+  height: 150px;
+  line-height: 150px;
+}
+
+@media all and (min-width: 992px) {
+  .footer__item {
+    height: 300px;
+    line-height: 300px;
+  }
 }
 
 .footer__item-inside {
@@ -135,18 +164,80 @@
   vertical-align: middle;
 }
 
+.footer__item-inside.info {
+  text-align: left;
+  vertical-align: bottom;
+}
+
+@media (min-width: 992px) {
+  .footer__item-inside.info {
+    vertical-align: middle;
+  }
+}
+
+.footer__info-parag {
+  margin: 0 0 10px 0;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .footer__info-parag {
+    display: inline-block;
+    margin: 0 0 10px 25px;
+  }
+}
+
+.sprite-s {
+  background-image: url(img/spritesheet.png);
+  background-repeat: no-repeat;
+  vertical-align: bottom;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+.sprite-logo-phone-s {
+  background-position: -10px -558px;
+}
+
+.sprite-logo-mail-s {
+  background-position: -10px -514px;
+}
+
+.sprite-logo-skype-s {
+  background-position: -10px -602px;
+}
+
+.my-info-link {
+  vertical-align: middle;
+  line-height: 24px;
+  color: #ccc;
+}
+
+.my-info-link:hover {
+  text-decoration: none;
+}
+
 .sprite {
-  background-image: url(img/logo/spritesheet.png);
+  background-image: url(img/spritesheet.png);
   background-repeat: no-repeat;
   display: inline-block;
   margin: 0 10px;
   width: 64px;
   height: 64px;
+  -webkit-transition-property: background, -webkit-box-shadow;
+  transition-property: background, -webkit-box-shadow;
+  -o-transition-property: background, box-shadow;
   transition-property: background, box-shadow;
+  transition-property: background, box-shadow, -webkit-box-shadow;
+  -webkit-transition: .4s linear;
+  -o-transition: .4s linear;
   transition: .4s linear;
 }
 
-.sprite:hover {
+.sprite:hover,
+.sprite:active,
+.sprite:focus {
+  -webkit-box-shadow: 0px 9px 20px 8px rgba(255, 255, 255, 0.2);
   box-shadow: 0px 9px 20px 8px rgba(255, 255, 255, 0.2);
 }
 
@@ -154,7 +245,9 @@
   background-position: -10px -10px;
 }
 
-.sprite-logo-fb:hover {
+.sprite-logo-fb:hover,
+.sprite-logo-fb:active,
+.sprite-logo-fb:focus {
   background-position: -10px -94px;
 }
 
@@ -163,7 +256,9 @@
   border-radius: 50%;
 }
 
-.sprite-logo-gh:hover {
+.sprite-logo-gh:hover,
+.sprite-logo-gh:active,
+.sprite-logo-gh:focus {
   background-position: -10px -262px;
 }
 
@@ -171,7 +266,9 @@
   background-position: -10px -346px;
 }
 
-.sprite-logo-in:hover {
+.sprite-logo-in:hover,
+.sprite-logo-in:active,
+.sprite-logo-in:focus {
   background-position: -10px -430px;
 }
 
@@ -231,6 +328,7 @@
   vertical-align: middle;
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
+  -webkit-box-shadow: 0 0 1px transparent;
   box-shadow: 0 0 1px transparent;
 }
 

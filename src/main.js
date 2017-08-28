@@ -11,7 +11,7 @@ const heightSizingByPad = (sizingEl, relativeWhich, offsetRelatMiddleView = 0, a
   // offsetRelatMiddleView: NUMBER. Shift sizingEl by vertical. if +N => shift top/ if -N => bot.
   // addingsToChangingEl: NUMBER. Shift to top or bot.
   let relativeH;
-  if (typeof relativeWhich === 'number') {
+  if (typeof relativeWhich === 'number' ) {
     relativeH = relativeWhich;
   } else { relativeH = $(relativeWhich).height() }
 
@@ -33,12 +33,13 @@ const scrollToPos = (scrollTo, durat) => {
   if (typeof scrollTo === 'object') {
     scrollTo = $(scrollTo).offset().top;
   }
-  $('.arrow').click(function(){
+  $('.arrow').click(function() {
     $("html, body").animate({
       scrollTop: scrollTo
     }, durat)
   })
 }
+
 $(function() {
   heightSizingByPad($('.jumbotron'), $(window), 0, $('.arrow__wrap'))
   scrollToPos($('#work'), 600)

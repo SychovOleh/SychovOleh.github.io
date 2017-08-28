@@ -8,13 +8,14 @@
   <title>Portfolio. Sychov Oleg.</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Pacifico|Playfair+Display|Raleway" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Pacifico|Playfair+Display|Raleway" rel="stylesheet">   <!-- fonts -->
+  <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css"> <!-- it-developers icons -->
   <link rel="stylesheet" type="text/css" href="dest/main.css">
 
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-  <script src="dest/jquery.min.js"></script>
-  <script src="dest/main.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <script src="dest/js/jquery.min.js"></script> -->
+  <script src="dest/js/polyfill.min.js"></script>  
+  <script src="dest/js/main.js"></script>
 </head>
 
 <body>
@@ -45,7 +46,7 @@
             <div class="row">
               <div class="col-xs-12 ">
                 <div class="work__img-wrap">
-                  <a class="work__img" style="background-image: url(dest/img/mobila.png)" href="https://sychovoleh.github.io/mobila/"></a>
+                  <a class="work__img" style="background-image: url(dest/img/mobila.jpg)" href="https://sychovoleh.github.io/mobila/"></a>
                 </div>
               </div>
               <div class="col-xs-12">
@@ -96,7 +97,7 @@
             <div class="row">
               <div class="col-xs-12 ">
                 <div class="work__img-wrap">
-                  <a class="work__img" style="background-image: url(dest/img/form-val.png)" href="https://sychovoleh.github.io/form-validation/"></a>
+                  <a class="work__img" style="background-image: url(dest/img/form-val.jpg)" href="https://sychovoleh.github.io/form-validation/"></a>
                 </div>
               </div>
               <div class="col-xs-12">
@@ -113,7 +114,7 @@
             <div class="row">
               <div class="col-xs-12 ">
                 <div class="work__img-wrap">
-                  <a class="work__img" style="background-image: url(dest/img/f-p.png)" href="https://sychovoleh.github.io/first-page/"></a>
+                  <a class="work__img" style="background-image: url(dest/img/f-p.jpg)" href="https://sychovoleh.github.io/first-page/"></a>
                 </div>
               </div>
               <div class="col-xs-12">
@@ -131,7 +132,7 @@
             <div class="row">
               <div class="col-xs-12 ">
                 <div class="work__img-wrap">
-                  <a class="work__img" style="background-image: url(dest/img/dogs.png)" href="https://sychovoleh.github.io/dirty-dogs/"></a>
+                  <a class="work__img" style="background-image: url(dest/img/dogs.jpg)" href="https://sychovoleh.github.io/dirty-dogs/"></a>
                 </div>
               </div>
               <div class="col-xs-12">
@@ -152,17 +153,30 @@
     <footer class="footer play-f">
       <div class="container">
         <div class="row">
-          <div class="col-xs-6 col-md-4 footer__item">
-            <div class="footer__item-inside"></div>
-          </div>
-          <div class="col-xs-6 col-md-4 footer__item">
-            <div class="footer__item-inside icons-soc">
-              <i class="sprite sprite-logo-fb"></i>
-              <i class="sprite sprite-logo-gh"></i>
-              <i class="sprite sprite-logo-in"></i>
+          <div class="col-xs-12 col-md-4 footer__item info-wrap">
+            <div class="footer__item-inside info">
+              <p class="footer__info-parag">
+                <i class="sprite-s sprite-logo-phone-s"></i>
+                <a href="tel: +380663172540" class="my-info-link">+38 066 317-25-40</a>
+              </p>
+              <p class="footer__info-parag">
+                <i class="sprite-s sprite-logo-mail-s"></i>
+                <a href="mailto: sychovoleh@gmail.com" class="my-info-link">sychovoleh@gmail.com</a>
+              </p>
+              <p class="footer__info-parag">
+                <i class="sprite-s sprite-logo-skype-s"></i>
+                <a href="skype: sfinksne?call" class="my-info-link">sfinksne</a>
+              </p>
             </div>
           </div>
-          <div class="col-xs-12 col-md-4 footer__item">
+          <div class="col-xs-12 col-sm-6 col-md-4 footer__item">
+            <div class="footer__item-inside icons-soc">
+              <a href="https://www.facebook.com/profile.php?id=100001679883424"><i class="sprite sprite-logo-fb"></i></a>
+              <a href="https://github.com/SychovOleh"><i class="sprite sprite-logo-gh"></i></a>
+              <a href="https://www.linkedin.com/feed/"><i class="sprite sprite-logo-in"></i></a>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4 footer__item">
             <p class="footer__sign footer__item-inside">Developed and designed by Oleg Sychov 2017</p>
           </div>
         </div>
