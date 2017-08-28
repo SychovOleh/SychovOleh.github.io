@@ -16,12 +16,12 @@ const heightSizingByPad = (sizingEl, relativeWhich, offsetRelatMiddleView = 0, a
   } else { relativeH = $(relativeWhich).height() }
 
   if (offsetRelatMiddleView === null) offsetRelatMiddleView = 0;
-
   if (typeof addingsToChangingEl === 'object') {
     addingsToChangingEl = $(addingsToChangingEl).height() +
       findPadVert(addingsToChangingEl) + findMargVert(addingsToChangingEl);
+    relativeH -= addingsToChangingEl;
   }
-  const futureH = $(sizingEl).height() + addingsToChangingEl;
+  const futureH = $(sizingEl).height();
 
   const differH = relativeH - futureH;
   $(sizingEl).css({
@@ -29,8 +29,17 @@ const heightSizingByPad = (sizingEl, relativeWhich, offsetRelatMiddleView = 0, a
     paddingBottom: differH / 2 + offsetRelatMiddleView,
   })
 }
-
+const scrollToPos = (scrollTo, durat) => {
+  if (typeof scrollTo === 'object') {
+    scrollTo = $(scrollTo).offset().top;
+  }
+  $('.arrow').click(function(){
+    $("html, body").animate({
+      scrollTop: scrollTo
+    }, durat)
+  })
+}
 $(function() {
-  heightSizingByPad($('.jumbotron'), $(window), 20)
-    // let a = $('#work').offset().top;
+  heightSizingByPad($('.jumbotron'), $(window), 0, $('.arrow__wrap'))
+  scrollToPos($('#work'), 600)
 })
