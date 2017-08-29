@@ -24,14 +24,14 @@
       <div class="jumbotron no-pad-vert no-marg">
         <div class="container header__inside">
           <h3 class="text-center ">Нello. I am Oleg.</h3>
-          <h1 class="text-center pacifico-f">Front-End Junior.</h1>
+          <h1 class="text-center pacifico-f" itemprop="jobTitle">Front-End Junior.</h1>
           <h3 class="text-center ">And it's my portfolio.</h3>
         </div>
       </div>
-      <span class="arrow__wrap text-center center-block">
-        <span class="arrow hvr-hang">View portfolio <br>
+      <span class="arrow__wrap text-center center-block ">
+        <button class="arrow hvr-hang btn-link">View portfolio <br>
         <span class="glyphicon glyphicon-menu-down"></span>
-      </span>
+      </button>
       </span>
       <div class="header__below"></div>
     </header>
@@ -80,7 +80,7 @@
             <div class="row">
               <div class="col-xs-12 ">
                 <div class="work__img-wrap">
-                  <a class="work__img" style="background:#F7F7F9" href="https://sychovoleh.github.io/context-menu/"></a>
+                  <a class="work__img" style="background-image:url(dest/img/c-m.jpg)" href="https://sychovoleh.github.io/context-menu/"></a>
                 </div>
               </div>
               <div class="col-xs-12 ">
@@ -154,30 +154,30 @@
       <div class="container">
         <div class="row">
           <div class="col-xs-12 col-md-4 footer__item info-wrap">
-            <div class="footer__item-inside info">
-              <p class="footer__info-parag">
+            <address class="footer__item-inside info" itemscope itemtype="http://schema.org/Person">
+              <p class="footer__info-parag" itemprop="address" itemscope itemtype="https://sychovoleh.github.io/">
                 <i class="sprite-s sprite-logo-phone-s"></i>
-                <a href="tel: +380663172540" class="my-info-link">+38 066 317-25-40</a>
+                <a href="tel: +380663172540" class="my-info-link" itemprop="telephone">+38 066 317-25-40</a>
               </p>
               <p class="footer__info-parag">
                 <i class="sprite-s sprite-logo-mail-s"></i>
-                <a href="mailto: sychovoleh@gmail.com" class="my-info-link">sychovoleh@gmail.com</a>
+                <a href="mailto: sychovoleh@gmail.com" class="my-info-link" itemprop="email">sychovoleh@gmail.com</a>
               </p>
               <p class="footer__info-parag">
                 <i class="sprite-s sprite-logo-skype-s"></i>
                 <a href="skype: sfinksne?call" class="my-info-link">sfinksne</a>
               </p>
-            </div>
+            </address>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-4 footer__item">
             <div class="footer__item-inside icons-soc">
               <a href="https://www.facebook.com/profile.php?id=100001679883424"><i class="sprite sprite-logo-fb"></i></a>
-              <a href="https://github.com/SychovOleh"><i class="sprite sprite-logo-gh"></i></a>
+              <a href="https://github.com/SychovOleh" itemprop="url"><i class="sprite sprite-logo-gh"></i></a>
               <a href="https://www.linkedin.com/feed/"><i class="sprite sprite-logo-in"></i></a>
             </div>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-4 footer__item">
-            <p class="footer__sign footer__item-inside">Developed and designed by Oleg Sychov 2017</p>
+            <p class="footer__sign footer__item-inside">Developed and designed by <span itemprop="name">Oleg</span> <span itemprop="additionalName">Sychov</span> 2017</p>
           </div>
         </div>
       </div>
