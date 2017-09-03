@@ -9,7 +9,7 @@ var findPadVert = function findPadVert(el) {
   return Number($(el).css('padding-top').replace('px', '')) + Number($(el).css('padding-bottom').replace('px', ''));
 };
 
-var heightSizingByPad = function heightSizingByPad(sizingEl, relativeWhich) {
+var initHeightByOtherEl = function initHeightByOtherEl(sizingEl, relativeWhich) {
   var offsetRelatMiddleView = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
   var addingsToChangingEl = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
 
@@ -29,13 +29,8 @@ var heightSizingByPad = function heightSizingByPad(sizingEl, relativeWhich) {
     addingsToChangingEl = $(addingsToChangingEl).height() + findPadVert(addingsToChangingEl) + findMargVert(addingsToChangingEl);
     relativeH -= addingsToChangingEl;
   }
-  var futureH = $(sizingEl).height();
 
-  var differH = relativeH - futureH;
-  $(sizingEl).css({
-    paddingTop: differH / 2 - offsetRelatMiddleView,
-    paddingBottom: differH / 2 + offsetRelatMiddleView
-  });
+  $(sizingEl).height(relativeH);
 };
 var scrollToPos = function scrollToPos(scrollTo, durat) {
   if ((typeof scrollTo === 'undefined' ? 'undefined' : _typeof(scrollTo)) === 'object') {
@@ -48,7 +43,84 @@ var scrollToPos = function scrollToPos(scrollTo, durat) {
   });
 };
 
+// 
+// 
+// ANIMATIONS:
+var isElementInViewport = function isElementInViewport(elem, animateSveralTimes) {
+  var $elem = $(elem);
+
+  // Get the scroll position of the page.
+  var scrollElem = navigator.userAgent.toLowerCase().indexOf('webkit') != -1 ? 'body' : 'html';
+  var viewportTop = $(scrollElem).scrollTop();
+  var viewportBottom = viewportTop + $(window).height();
+
+  // Get the position of the element on the page.
+  var elemTop = Math.round($elem.offset().top);
+  var elemBottom = elemTop + $elem.height();
+
+  if (animateSveralTimes) {
+    if ($elem.hasClass('anim-again')) {
+      // debugger
+      return elemTop - 60 < viewportBottom && elemBottom + 60 > viewportTop;
+    }
+    $elem.addClass('anim-again');
+  }
+
+  return elemTop < viewportBottom && elemBottom > viewportTop;
+};
+// Check if it's time to start the animation.
+var checkAnimation = function checkAnimation(animationTarget, animateSveralTimes) {
+
+  var $elem = $(animationTarget);
+
+  // For playing animation every time when scroll to el again
+  if (animateSveralTimes) {
+    if ($elem.hasClass('animate') && !isElementInViewport($elem, true)) {
+      $elem.removeClass('animate');
+      $elem.css('opacity', '0');
+    }
+    if (isElementInViewport($elem, true)) {
+      $elem.addClass('animate');
+      $elem.css('opacity', '1');
+    }
+    return;
+  }
+
+  if ($elem.hasClass('animate')) {
+    return;
+  };
+
+  if (isElementInViewport($elem)) {
+    $elem.addClass('animate');
+    $elem.css('opacity', '1');
+  } else {
+    $elem.css('opacity', '0');
+  }
+};
+$(window).scroll(function () {
+  checkAnimation('.title-jun', true);
+  checkAnimation(document.querySelector('.w1'));
+  checkAnimation(document.querySelector('.w2'));
+  checkAnimation(document.querySelector('.w3'));
+  checkAnimation(document.querySelector('.w4'));
+  checkAnimation(document.querySelector('.w5'));
+  checkAnimation(document.querySelector('.w6'));
+});
+
 $(function () {
-  heightSizingByPad($('.jumbotron'), $(window), 0, $('.arrow__wrap'));
+  initHeightByOtherEl($('.jumbotron'), $(window), 0, $('.arrow__wrap'));
   scrollToPos($('#work'), 600);
+
+  //  Animations:
+  var jumbo = document.querySelector('.title-jun');
+
+  $(window).on('load', function () {
+    checkAnimation(jumbo);
+    checkAnimation(document.querySelector('.w1'));
+    checkAnimation(document.querySelector('.w2'));
+    checkAnimation(document.querySelector('.w3'));
+    checkAnimation(document.querySelector('.w4'));
+    checkAnimation(document.querySelector('.w5'));
+    checkAnimation(document.querySelector('.w6'));
+  });
 });

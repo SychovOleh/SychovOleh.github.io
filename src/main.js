@@ -5,13 +5,13 @@ const findPadVert = (el) => {
   return Number($(el).css('padding-top').replace('px', '')) + Number($(el).css('padding-bottom').replace('px', ''));
 }
 
-const heightSizingByPad = (sizingEl, relativeWhich, offsetRelatMiddleView = 0, addingsToChangingEl = 0) => {
+const initHeightByOtherEl = (sizingEl, relativeWhich, offsetRelatMiddleView = 0, addingsToChangingEl = 0) => {
   // sizingEl: ELEMENT. That will change height
   // relativeWhich: ELEMENT or NUMBER(heght-size)
   // offsetRelatMiddleView: NUMBER. Shift sizingEl by vertical. if +N => shift top/ if -N => bot.
   // addingsToChangingEl: NUMBER. Shift to top or bot.
   let relativeH;
-  if (typeof relativeWhich === 'number' ) {
+  if (typeof relativeWhich === 'number') {
     relativeH = relativeWhich;
   } else { relativeH = $(relativeWhich).height() }
 
@@ -21,13 +21,8 @@ const heightSizingByPad = (sizingEl, relativeWhich, offsetRelatMiddleView = 0, a
       findPadVert(addingsToChangingEl) + findMargVert(addingsToChangingEl);
     relativeH -= addingsToChangingEl;
   }
-  const futureH = $(sizingEl).height();
 
-  const differH = relativeH - futureH;
-  $(sizingEl).css({
-    paddingTop: differH / 2 - offsetRelatMiddleView,
-    paddingBottom: differH / 2 + offsetRelatMiddleView,
-  })
+  $(sizingEl).height(relativeH)
 }
 const scrollToPos = (scrollTo, durat) => {
   if (typeof scrollTo === 'object') {
@@ -40,7 +35,82 @@ const scrollToPos = (scrollTo, durat) => {
   })
 }
 
+// 
+// 
+// ANIMATIONS:
+const isElementInViewport = (elem, animateSveralTimes) => {
+    let $elem = $(elem);
+
+    // Get the scroll position of the page.
+    let scrollElem = ((navigator.userAgent.toLowerCase().indexOf('webkit') != -1) ? 'body' : 'html');
+    let viewportTop = $(scrollElem).scrollTop();
+    let viewportBottom = viewportTop + $(window).height();
+
+    // Get the position of the element on the page.
+    let elemTop = Math.round($elem.offset().top);
+    let elemBottom = elemTop + $elem.height();
+
+    if (animateSveralTimes) {
+      if ($elem.hasClass('anim-again')) {
+        // debugger
+        return ((elemTop - 60 < viewportBottom) && (elemBottom + 60 > viewportTop));
+      }
+      $elem.addClass('anim-again')
+    }
+
+    return ((elemTop < viewportBottom) && (elemBottom > viewportTop));
+  }
+  // Check if it's time to start the animation.
+const checkAnimation = (animationTarget, animateSveralTimes) => {
+
+  let $elem = $(animationTarget);
+
+  // For playing animation every time when scroll to el again
+  if (animateSveralTimes) {
+    if ($elem.hasClass('animate') && !isElementInViewport($elem, true)) {
+      $elem.removeClass('animate');
+      $elem.css('opacity', '0')
+    }
+    if (isElementInViewport($elem, true)) {
+      $elem.addClass('animate');
+      $elem.css('opacity', '1')
+    }
+    return;
+  }
+
+  if ($elem.hasClass('animate')) { return };
+
+  if (isElementInViewport($elem)) {
+    $elem.addClass('animate');
+    $elem.css('opacity', '1')
+  } else {
+    $elem.css('opacity', '0')
+  }
+}
+$(window).scroll(() => {
+  checkAnimation('.title-jun', true);
+  checkAnimation(document.querySelector('.w1'));
+  checkAnimation(document.querySelector('.w2'));
+  checkAnimation(document.querySelector('.w3'));
+  checkAnimation(document.querySelector('.w4'));
+  checkAnimation(document.querySelector('.w5'));
+  checkAnimation(document.querySelector('.w6'));
+})
+
 $(function() {
-  heightSizingByPad($('.jumbotron'), $(window), 0, $('.arrow__wrap'))
+  initHeightByOtherEl($('.jumbotron'), $(window), 0, $('.arrow__wrap'))
   scrollToPos($('#work'), 600)
+
+  //  Animations:
+  let jumbo = document.querySelector('.title-jun');
+
+  $(window).on('load', () => {
+    // checkAnimation(jumbo);
+    checkAnimation(document.querySelector('.w1'));
+    checkAnimation(document.querySelector('.w2'));
+    checkAnimation(document.querySelector('.w3'));
+    checkAnimation(document.querySelector('.w4'));
+    checkAnimation(document.querySelector('.w5'));
+    checkAnimation(document.querySelector('.w6'));
+  })
 })

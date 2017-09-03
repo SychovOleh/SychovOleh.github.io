@@ -22,6 +22,19 @@
 .jumbotron {
   background: inherit;
   padding: 230px 0 290px;
+  text-align: center;
+}
+
+.jumbotron:before {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  content: "";
+}
+
+.header__inside {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .arrow {
@@ -285,7 +298,8 @@
 
 /* ADDING CLASSES */
 
-.btn-link:focus,.btn-link:hover {
+.btn-link:focus,
+.btn-link:hover {
   outline: none;
   color: #333;
   text-decoration: none;
@@ -365,4 +379,99 @@
   animation-fill-mode: forwards;
   -webkit-animation-direction: normal, alternate;
   animation-direction: normal, alternate;
+}
+
+@-webkit-keyframes rotateInUpLeft {
+  from {
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    -webkit-transform: rotate3d(0, 0, 1, 45deg);
+    transform: rotate3d(0, 0, 1, 45deg);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@keyframes rotateInUpLeft {
+  from {
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    -webkit-transform: rotate3d(0, 0, 1, 45deg);
+    transform: rotate3d(0, 0, 1, 45deg);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1;
+  }
+}
+
+
+/*  */
+
+@-webkit-keyframes slideInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate.title-jun {
+  -webkit-animation: rotateInUpLeft 1s .3s backwards;
+  animation: rotateInUpLeft 1s .3s backwards;
+}
+
+@media all and (max-width: 767px) {
+  .title-jun {
+    -webkit-animation: rotateInUpLeft 1s .3s backwards;
+    animation: rotateInUpLeft 1s .3s backwards;
+  }
+}
+
+.animate.work__item.w1,
+.animate.work__item.w4 {
+  -webkit-animation: slideInDown .8s .1s backwards;
+  animation: slideInDown .8s .1s backwards;
+}
+
+.animate.work__item.w2,
+.animate.work__item.w5 {
+  -webkit-animation: slideInDown .8s .25s backwards;
+  animation: slideInDown .8s .25s backwards;
+}
+
+.animate.work__item.w3,
+.animate.work__item.w6 {
+  -webkit-animation: slideInDown .8s .4s backwards;
+  animation: slideInDown .8s .4s backwards;
 }
