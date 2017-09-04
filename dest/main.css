@@ -446,13 +446,13 @@
   }
 }
 
-.animate.title-jun {
+.title-jun {
   -webkit-animation: rotateInUpLeft 1s .3s backwards;
   animation: rotateInUpLeft 1s .3s backwards;
 }
 
 @media all and (max-width: 767px) {
-  .title-jun {
+  .title-jun.animate {
     -webkit-animation: rotateInUpLeft 1s .3s backwards;
     animation: rotateInUpLeft 1s .3s backwards;
   }

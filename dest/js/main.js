@@ -50,8 +50,8 @@ var isElementInViewport = function isElementInViewport(elem, animateSveralTimes)
   var $elem = $(elem);
 
   // Get the scroll position of the page.
-  var scrollElem = navigator.userAgent.toLowerCase().indexOf('webkit') != -1 ? 'body' : 'html';
-  var viewportTop = $(scrollElem).scrollTop();
+  // let scrollElem = ((navigator.userAgent.toLowerCase().indexOf('webkit') != -1) ? 'body' : 'html');
+  var viewportTop = $('body').scrollTop();
   var viewportBottom = viewportTop + $(window).height();
 
   // Get the position of the element on the page.

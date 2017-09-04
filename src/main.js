@@ -105,7 +105,7 @@ $(function() {
   let jumbo = document.querySelector('.title-jun');
 
   $(window).on('load', () => {
-    // checkAnimation(jumbo);
+    checkAnimation(jumbo);
     checkAnimation(document.querySelector('.w1'));
     checkAnimation(document.querySelector('.w2'));
     checkAnimation(document.querySelector('.w3'));
