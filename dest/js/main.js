@@ -49,18 +49,14 @@ var scrollToPos = function scrollToPos(scrollTo, durat) {
 var isElementInViewport = function isElementInViewport(elem, animateSveralTimes) {
   var $elem = $(elem);
 
-  // Get the scroll position of the page.
-  // let scrollElem = ((navigator.userAgent.toLowerCase().indexOf('webkit') != -1) ? 'body' : 'html');
-  var viewportTop = $('body').scrollTop();
+  var viewportTop = $('html').scrollTop() ? $('html').scrollTop() : $('body').scrollTop();
   var viewportBottom = viewportTop + $(window).height();
 
-  // Get the position of the element on the page.
   var elemTop = Math.round($elem.offset().top);
   var elemBottom = elemTop + $elem.height();
 
   if (animateSveralTimes) {
     if ($elem.hasClass('anim-again')) {
-      // debugger
       return elemTop - 60 < viewportBottom && elemBottom + 60 > viewportTop;
     }
     $elem.addClass('anim-again');
@@ -122,5 +118,6 @@ $(function () {
     checkAnimation(document.querySelector('.w4'));
     checkAnimation(document.querySelector('.w5'));
     checkAnimation(document.querySelector('.w6'));
+    $('body').addClass('loaded');
   });
 });

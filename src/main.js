@@ -41,18 +41,14 @@ const scrollToPos = (scrollTo, durat) => {
 const isElementInViewport = (elem, animateSveralTimes) => {
     let $elem = $(elem);
 
-    // Get the scroll position of the page.
-    let scrollElem = ((navigator.userAgent.toLowerCase().indexOf('webkit') != -1) ? 'body' : 'html');
-    let viewportTop = $(scrollElem).scrollTop();
+    let viewportTop = ($('html').scrollTop()) ? $('html').scrollTop() : $('body').scrollTop();
     let viewportBottom = viewportTop + $(window).height();
 
-    // Get the position of the element on the page.
     let elemTop = Math.round($elem.offset().top);
     let elemBottom = elemTop + $elem.height();
 
     if (animateSveralTimes) {
       if ($elem.hasClass('anim-again')) {
-        // debugger
         return ((elemTop - 60 < viewportBottom) && (elemBottom + 60 > viewportTop));
       }
       $elem.addClass('anim-again')
@@ -112,5 +108,6 @@ $(function() {
     checkAnimation(document.querySelector('.w4'));
     checkAnimation(document.querySelector('.w5'));
     checkAnimation(document.querySelector('.w6'));
+    $('body').addClass('loaded');
   })
 })
