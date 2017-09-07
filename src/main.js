@@ -108,6 +108,7 @@ $(function() {
     checkAnimation(document.querySelector('.w4'));
     checkAnimation(document.querySelector('.w5'));
     checkAnimation(document.querySelector('.w6'));
-    $('body').addClass('loaded');
+
+    setTimeout($('body').addClass('loaded'), 400)
   })
 })
