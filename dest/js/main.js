@@ -2,6 +2,8 @@
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 var findMargVert = function findMargVert(el) {
   return Number($(el).css('margin-top').replace('px', '')) + Number($(el).css('margin-bottom').replace('px', ''));
 };
@@ -32,9 +34,10 @@ var initHeightByOtherEl = function initHeightByOtherEl(sizingEl, relativeWhich) 
 
   $(sizingEl).height(relativeH);
 };
-var scrollToPos = function scrollToPos(scrollTo, durat) {
+
+var scrollToPos = function scrollToPos(scrollTo, durat, addDistance) {
   if ((typeof scrollTo === 'undefined' ? 'undefined' : _typeof(scrollTo)) === 'object') {
-    scrollTo = $(scrollTo).offset().top;
+    scrollTo = $(scrollTo).offset().top + addDistance;
   }
   $('.arrow').click(function () {
     $("html, body").animate({
@@ -44,8 +47,8 @@ var scrollToPos = function scrollToPos(scrollTo, durat) {
 };
 
 // 
-// 
 // ANIMATIONS:
+// 
 var isElementInViewport = function isElementInViewport(elem, animateSveralTimes) {
   var $elem = $(elem);
 
@@ -103,13 +106,72 @@ $(window).scroll(function () {
   checkAnimation(document.querySelector('.w6'));
 });
 
+// 
+var initElHeightByMaxWidth = function initElHeightByMaxWidth(elementsClass) {
+  var elemsForChange = document.querySelectorAll('.' + elementsClass);
+  var findHighestSize = function findHighestSize() {
+    // if elemsForChange box-sizing === border box ,    else {el.offsetHeight -findPadVert(el))
+    var workContentHeight = [].map.call(elemsForChange, function (el) {
+      return el.offsetHeight;
+    });
+    return Math.max.apply(Math, _toConsumableArray(workContentHeight));
+  };
+
+  var pointsToResizeWisdth = [{ min: 0, max: 767 }, { min: 768, max: 991 }, { min: 992, max: 1199 }, { min: 1200, max: Infinity }];
+
+  pointsToResizeWisdth.map(function (el, i) {
+    return el.index = i;
+  });
+
+  var viewWidthNow = void 0;
+  viewWidthNow = window.innerWidth;
+  var findPoint = function findPoint() {
+    var index = void 0;
+    pointsToResizeWisdth.forEach(function (el) {
+      if (el.min <= viewWidthNow && viewWidthNow <= el.max) {
+        index = el.index;
+        return;
+      }
+    });
+    return index;
+  };
+  var point = findPoint();
+  var maxSize = findHighestSize();
+
+  var makeMaxSize = function makeMaxSize(elemsForChange, maxSize) {
+    Array.prototype.forEach.call(elemsForChange, function (el) {
+      el.style.height = maxSize + 'px';
+    });
+  };
+
+  if (point !== 0) {
+    makeMaxSize(elemsForChange, maxSize);
+  }
+
+  $(window).resize(function () {
+    viewWidthNow = window.innerWidth;
+    var pointNow = findPoint();
+
+    if (point !== pointNow) {
+      if (pointNow === 0) {
+        $(elemsForChange).css('height', 'auto');
+      } else {
+        $(elemsForChange).css('height', 'auto');
+        maxSize = findHighestSize();
+        makeMaxSize(elemsForChange, maxSize);
+      }
+      point = pointNow;
+    }
+  });
+};
+
+// READY
 $(function () {
   initHeightByOtherEl($('.jumbotron'), $(window), 0, $('.arrow__wrap'));
-  scrollToPos($('#work'), 600);
+  scrollToPos($('.work__wrap'), 500, 4);
 
   //  Animations:
   var jumbo = document.querySelector('.title-jun');
-
   $(window).on('load', function () {
     checkAnimation(jumbo);
     checkAnimation(document.querySelector('.w1'));
@@ -118,6 +180,6 @@ $(function () {
     checkAnimation(document.querySelector('.w4'));
     checkAnimation(document.querySelector('.w5'));
     checkAnimation(document.querySelector('.w6'));
-    $('body').addClass('loaded');
+    initElHeightByMaxWidth('work__content');
   });
 });

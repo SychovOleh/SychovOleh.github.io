@@ -24,9 +24,10 @@ const initHeightByOtherEl = (sizingEl, relativeWhich, offsetRelatMiddleView = 0,
 
   $(sizingEl).height(relativeH)
 }
-const scrollToPos = (scrollTo, durat) => {
+
+const scrollToPos = (scrollTo, durat, addDistance) => {
   if (typeof scrollTo === 'object') {
-    scrollTo = $(scrollTo).offset().top;
+    scrollTo = $(scrollTo).offset().top + addDistance;
   }
   $('.arrow').click(function() {
     $("html, body").animate({
@@ -36,8 +37,8 @@ const scrollToPos = (scrollTo, durat) => {
 }
 
 // 
-// 
 // ANIMATIONS:
+// 
 const isElementInViewport = (elem, animateSveralTimes) => {
     let $elem = $(elem);
 
@@ -93,13 +94,74 @@ $(window).scroll(() => {
   checkAnimation(document.querySelector('.w6'));
 })
 
+// 
+const initElHeightByMaxWidth = (elementsClass) => {
+  let elemsForChange = document.querySelectorAll('.' + elementsClass);
+  const findHighestSize = () => {
+    // if elemsForChange box-sizing === border box ,    else {el.offsetHeight -findPadVert(el))
+    let workContentHeight = [].map.call(elemsForChange, el => el.offsetHeight)
+    return Math.max(...workContentHeight)
+  }
+
+  let pointsToResizeWisdth = [{ min: 0, max: 767 },
+    { min: 768, max: 991 },
+    { min: 992, max: 1199 },
+    { min: 1200, max: Infinity }
+  ];
+
+  pointsToResizeWisdth.map((el, i) => el.index = i)
+
+  let viewWidthNow;
+  viewWidthNow = window.innerWidth;
+  const findPoint = () => {
+    let index;
+    pointsToResizeWisdth.forEach((el) => {
+      if (el.min <= viewWidthNow && viewWidthNow <= el.max) {
+        index = el.index;
+        return
+      }
+    })
+    return index
+  }
+  let point = findPoint()
+  let maxSize = findHighestSize();
+
+  const makeMaxSize = (elemsForChange, maxSize) => {
+    Array.prototype.forEach.call(elemsForChange, (el) => {
+      el.style.height = maxSize + 'px';
+    })
+  }
+
+  if (point !== 0) {
+    makeMaxSize(elemsForChange, maxSize)
+  }
+
+  $(window).resize(() => {
+    viewWidthNow = window.innerWidth;
+    let pointNow = findPoint();
+
+    if (point !== pointNow) {
+      if (pointNow === 0) {
+        $(elemsForChange).css('height', 'auto');
+      } else {
+        $(elemsForChange).css('height', 'auto');
+        maxSize = findHighestSize()
+        makeMaxSize(elemsForChange, maxSize)
+      }
+      point = pointNow;
+    }
+  })
+
+}
+
+
+// READY
 $(function() {
   initHeightByOtherEl($('.jumbotron'), $(window), 0, $('.arrow__wrap'))
-  scrollToPos($('#work'), 600)
+  scrollToPos($('.work__wrap'), 500, 4)
 
   //  Animations:
   let jumbo = document.querySelector('.title-jun');
-
   $(window).on('load', () => {
     checkAnimation(jumbo);
     checkAnimation(document.querySelector('.w1'));
@@ -108,7 +170,6 @@ $(function() {
     checkAnimation(document.querySelector('.w4'));
     checkAnimation(document.querySelector('.w5'));
     checkAnimation(document.querySelector('.w6'));
-
-    setTimeout($('body').addClass('loaded'), 400)
+    initElHeightByMaxWidth('work__content')
   })
 })
