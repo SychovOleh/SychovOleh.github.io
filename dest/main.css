@@ -33,6 +33,9 @@
   width: 100%;
 }
 
+.title-jun{
+  opacity: 0;
+}
 .arrow {
   max-width: 300px;
   cursor: pointer;
