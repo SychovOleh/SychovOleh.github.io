@@ -36,9 +36,9 @@ const scrollToPos = (scrollTo, durat, addDistance) => {
   })
 }
 
-// 
+//
 // ANIMATIONS:
-// 
+//
 const isElementInViewport = (elem, animateSveralTimes) => {
     let $elem = $(elem);
 
