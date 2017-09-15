@@ -199,6 +199,7 @@
       setTimeout(() => {
         if (!document.querySelector('.title-jun').classList.contains('animate')) {
           // ** if BUG IN CHROME WITH CSS ANIMATIONS NEW VERSION WITH ANIMATIONS
+          console.log('fucken bug in chrome')
           var titleJun = document.querySelector('.title-jun')
           titleJun.classList.add('animate')
           titleJun.classList.add('anim-again')
