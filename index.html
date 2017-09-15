@@ -198,7 +198,7 @@
     window.onload = function() {
       setTimeout(() => {
         if (!document.querySelector('.title-jun').classList.contains('animate')) {
-          // ** if STRANGE PROBLEMS IN CHROME NEW VERSION WITH ANIMATIONS
+          // ** if BUG IN CHROME WITH CSS ANIMATIONS NEW VERSION WITH ANIMATIONS
           var titleJun = document.querySelector('.title-jun')
           titleJun.classList.add('animate')
           titleJun.classList.add('anim-again')
