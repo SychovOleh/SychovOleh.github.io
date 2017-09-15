@@ -197,15 +197,25 @@
   <script>
     window.onload = function() {
       setTimeout(() => {
-        if (!document.querySelector('.title-jun').classList.contains('animate')) {
-          // ** if BUG IN CHROME WITH CSS ANIMATIONS NEW VERSION WITH ANIMATIONS
+        const titleJun = document.querySelector('.title-jun');
+        
+        const isElementInViewport = (elem) => {
+          let $elem = $(elem);
+          let viewportTop = ($('html').scrollTop()) ? $('html').scrollTop() : $('body').scrollTop();
+          let viewportBottom = viewportTop + $(window).height();
+          let elemTop = Math.round($elem.offset().top);
+          let elemBottom = elemTop + $elem.height();
+          return ((elemTop < viewportBottom) && (elemBottom > viewportTop));
+        }
+
+        // ** if BUG IN CHROME WITH STARTING JS CODE INSIDE $(window).on('load') AFTER RELOADING PAGE **
+        if (!document.querySelector('.title-jun').classList.contains('animate') && isElementInViewport(titleJun)) {
           console.log('fucken bug in chrome')
-          var titleJun = document.querySelector('.title-jun')
           titleJun.classList.add('animate')
           titleJun.classList.add('anim-again')
           titleJun.style.opacity = 1
         }
-      }, 1000)
+      }, 900)
     }
   </script>
 </body>

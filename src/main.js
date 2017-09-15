@@ -42,15 +42,17 @@ const scrollToPos = (scrollTo, durat, addDistance) => {
 const isElementInViewport = (elem, animateSveralTimes) => {
     let $elem = $(elem);
 
-    let viewportTop = ($('html').scrollTop()) ? $('html').scrollTop() : $('body').scrollTop();
-    let viewportBottom = viewportTop + $(window).height();
+    const viewportTop = ($('html').scrollTop()) ? $('html').scrollTop() : $('body').scrollTop();
+    const viewportBottom = viewportTop + $(window).height();
 
-    let elemTop = Math.round($elem.offset().top);
-    let elemBottom = elemTop + $elem.height();
+    const elemTop = Math.round($elem.offset().top);
+    const elemBottom = elemTop + $elem.height();
 
     if (animateSveralTimes) {
       if ($elem.hasClass('anim-again')) {
-        return ((elemTop - 60 < viewportBottom) && (elemBottom + 60 > viewportTop));
+        const distanceToAnimElWhenNeccesToStart = 60;
+        return ((elemTop - distanceToAnimElWhenNeccesToStart < viewportBottom) &&
+          (elemBottom + distanceToAnimElWhenNeccesToStart > viewportTop));
       }
       $elem.addClass('anim-again')
     }
@@ -98,7 +100,7 @@ $(window).scroll(() => {
 const initElHeightByMaxWidth = (elementsClass) => {
   let elemsForChange = document.querySelectorAll('.' + elementsClass);
   const findHighestSize = () => {
-    // if elemsForChange box-sizing === border box ,    else {el.offsetHeight -findPadVert(el))
+    // **if elemsForChange box-sizing === border box ,    else {el.offsetHeight -findPadVert(el))**
     let workContentHeight = [].map.call(elemsForChange, el => el.offsetHeight)
     return Math.max(...workContentHeight)
   }
@@ -155,10 +157,10 @@ const initElHeightByMaxWidth = (elementsClass) => {
 }
 
 
-// READY
 $(function() {
   initHeightByOtherEl($('.jumbotron'), $(window), 0, $('.arrow__wrap'))
   scrollToPos($('.work__wrap'), 500, 4)
+  initElHeightByMaxWidth('work__content')
 
   //  Animations:
   let jumbo = document.querySelector('.title-jun');
@@ -170,6 +172,5 @@ $(function() {
     checkAnimation(document.querySelector('.w4'));
     checkAnimation(document.querySelector('.w5'));
     checkAnimation(document.querySelector('.w6'));
-    initElHeightByMaxWidth('work__content')
   })
 })

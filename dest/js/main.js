@@ -46,9 +46,9 @@ var scrollToPos = function scrollToPos(scrollTo, durat, addDistance) {
   });
 };
 
-// 
+//
 // ANIMATIONS:
-// 
+//
 var isElementInViewport = function isElementInViewport(elem, animateSveralTimes) {
   var $elem = $(elem);
 
@@ -60,7 +60,8 @@ var isElementInViewport = function isElementInViewport(elem, animateSveralTimes)
 
   if (animateSveralTimes) {
     if ($elem.hasClass('anim-again')) {
-      return elemTop - 60 < viewportBottom && elemBottom + 60 > viewportTop;
+      var distanceToAnimElWhenNeccesToStart = 60;
+      return elemTop - distanceToAnimElWhenNeccesToStart < viewportBottom && elemBottom + distanceToAnimElWhenNeccesToStart > viewportTop;
     }
     $elem.addClass('anim-again');
   }
@@ -110,7 +111,7 @@ $(window).scroll(function () {
 var initElHeightByMaxWidth = function initElHeightByMaxWidth(elementsClass) {
   var elemsForChange = document.querySelectorAll('.' + elementsClass);
   var findHighestSize = function findHighestSize() {
-    // if elemsForChange box-sizing === border box ,    else {el.offsetHeight -findPadVert(el))
+    // **if elemsForChange box-sizing === border box ,    else {el.offsetHeight -findPadVert(el))**
     var workContentHeight = [].map.call(elemsForChange, function (el) {
       return el.offsetHeight;
     });
@@ -165,10 +166,10 @@ var initElHeightByMaxWidth = function initElHeightByMaxWidth(elementsClass) {
   });
 };
 
-// READY
 $(function () {
   initHeightByOtherEl($('.jumbotron'), $(window), 0, $('.arrow__wrap'));
   scrollToPos($('.work__wrap'), 500, 4);
+  initElHeightByMaxWidth('work__content');
 
   //  Animations:
   var jumbo = document.querySelector('.title-jun');
@@ -180,6 +181,5 @@ $(function () {
     checkAnimation(document.querySelector('.w4'));
     checkAnimation(document.querySelector('.w5'));
     checkAnimation(document.querySelector('.w6'));
-    initElHeightByMaxWidth('work__content');
   });
 });
