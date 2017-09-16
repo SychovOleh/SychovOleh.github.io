@@ -97,6 +97,7 @@ $(window).scroll(() => {
 })
 
 // 
+// ** I use bootstrap 3 in this page => reason why can't init 
 const initElHeightByMaxWidth = (elementsClass) => {
   let elemsForChange = document.querySelectorAll('.' + elementsClass);
   const findHighestSize = () => {
