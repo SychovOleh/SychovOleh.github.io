@@ -159,23 +159,94 @@
 }
 
 .icon {
-  font-size: 30px;
+  font-size: 0;
   padding-top: 5px;
 }
 
-.icon i {
+.icon i, .icon span {
   padding: 0 2px 0;
 }
 
+.logo {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+}
+
+
+/* .ajax-logo{
+  background-image: url(img/ajax-logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+} */
+
+.mustache-logo-wrap {
+  line-height: 11px;
+}
+
+.mustache-text, .mustache-logo {
+  display: inline-block;
+  width: 100%;
+  font-style: initial;
+  font-family: initial;
+}
+
+.mustache-text {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 6px;
+  height: 9px;
+  line-height: 9px;
+  transform: translate(-2px, 4px);
+}
+
+.mustache-logo {
+  transform: rotate(-89deg) translate(-1px, -2px);
+  font-size: 30px;
+}
+
+i[class^='devicon-'] {
+  font-size: 30px;
+}
+
 @media (min-width: 320px) {
-  .icon {
+  .logo {
+    height: 35px;
+    width: 39px;
+  }
+  i[class^='devicon-'] {
     font-size: 35px;
+  }
+  .mustache-logo-wrap {
+    line-height: 13px;
+  }
+  .mustache-text {
+    font-size: 8px;
+    transform: translate(-1px, 4px);
+  }
+  .mustache-logo {
+    transform: rotate(-89deg) translate(-2px, -3px);
+    font-size: 37px;
   }
 }
 
 @media (min-width: 400px) {
-  .icon {
+  .logo {
+    height: 45px;
+    width: 49px;
+  }
+  i[class^='devicon-'] {
     font-size: 45px;
+  }
+  .mustache-logo {
+    transform: rotate(-89deg) translate(-3px, -3px);
+    font-size: 48px;
+  }
+  .mustache-logo-wrap {
+    line-height: 17px;
+  }
+  .mustache-text {
+    font-size: 10.5px;
+    transform: translate(-2px, 6px);
   }
 }
 
@@ -294,9 +365,7 @@ strong {
   transition: .4s linear;
 }
 
-.sprite:hover,
-.sprite:active,
-.sprite:focus {
+.sprite:hover, .sprite:active, .sprite:focus {
   -webkit-box-shadow: 0px 9px 20px 8px rgba(255, 255, 255, 0.2);
   box-shadow: 0px 9px 20px 8px rgba(255, 255, 255, 0.2);
 }
@@ -305,9 +374,7 @@ strong {
   background-position: -10px -10px;
 }
 
-.sprite-logo-fb:hover,
-.sprite-logo-fb:active,
-.sprite-logo-fb:focus {
+.sprite-logo-fb:hover, .sprite-logo-fb:active, .sprite-logo-fb:focus {
   background-position: -10px -94px;
 }
 
@@ -316,9 +383,7 @@ strong {
   border-radius: 50%;
 }
 
-.sprite-logo-gh:hover,
-.sprite-logo-gh:active,
-.sprite-logo-gh:focus {
+.sprite-logo-gh:hover, .sprite-logo-gh:active, .sprite-logo-gh:focus {
   background-position: -10px -262px;
 }
 
@@ -326,17 +391,14 @@ strong {
   background-position: -10px -346px;
 }
 
-.sprite-logo-in:hover,
-.sprite-logo-in:active,
-.sprite-logo-in:focus {
+.sprite-logo-in:hover, .sprite-logo-in:active, .sprite-logo-in:focus {
   background-position: -10px -430px;
 }
 
 
 /* ADDING CLASSES */
 
-.btn-link:focus,
-.btn-link:hover {
+.btn-link:focus, .btn-link:hover {
   outline: none;
   color: #333;
   text-decoration: none;
@@ -399,9 +461,7 @@ strong {
   box-shadow: 0 0 1px transparent;
 }
 
-.hvr-hang:hover,
-.hvr-hang:focus,
-.hvr-hang:active {
+.hvr-hang:hover, .hvr-hang:focus, .hvr-hang:active {
   -webkit-animation-name: hvr-hang-sink, hvr-hang;
   animation-name: hvr-hang-sink, hvr-hang;
   -webkit-animation-duration: .3s, 1.5s;
@@ -495,20 +555,17 @@ strong {
   }
 }
 
-.animate.work__item.w1,
-.animate.work__item.w4 {
+.animate.work__item.w1, .animate.work__item.w4 {
   -webkit-animation: slideInDown .8s .1s backwards;
   animation: slideInDown .8s .1s backwards;
 }
 
-.animate.work__item.w2,
-.animate.work__item.w5 {
+.animate.work__item.w2, .animate.work__item.w5 {
   -webkit-animation: slideInDown .8s .25s backwards;
   animation: slideInDown .8s .25s backwards;
 }
 
-.animate.work__item.w3,
-.animate.work__item.w6 {
+.animate.work__item.w3, .animate.work__item.w6 {
   -webkit-animation: slideInDown .8s .4s backwards;
   animation: slideInDown .8s .4s backwards;
 }
