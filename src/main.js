@@ -30,7 +30,7 @@ const scrollToPos = (scrollTo, durat, addDistance) => {
     scrollTo = $(scrollTo).offset().top + addDistance;
   }
   $('.arrow').click(function() {
-    $("html, body").animate({
+    $('html, body').animate({
       scrollTop: scrollTo
     }, durat)
   })
